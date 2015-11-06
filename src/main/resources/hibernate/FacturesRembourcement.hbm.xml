@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4 nov. 2015 21:54:52 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.es.assurance.model.FacturesRembourcement" table="factures_rembourcement" catalog="assurance" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="clients" class="com.es.assurance.model.Clients" fetch="select">
+            <column name="client_id" />
+        </many-to-one>
+        <many-to-one name="entreprises" class="com.es.assurance.model.Entreprises" fetch="select">
+            <column name="entreprise_id" />
+        </many-to-one>
+        <many-to-one name="rembourcements" class="com.es.assurance.model.Rembourcements" fetch="select">
+            <column name="rembourcement_id" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

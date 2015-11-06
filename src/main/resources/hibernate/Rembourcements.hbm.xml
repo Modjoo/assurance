@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4 nov. 2015 21:54:52 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.es.assurance.model.Rembourcements" table="rembourcements" catalog="assurance" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="frais" class="com.es.assurance.model.Frais" fetch="select">
+            <column name="frais_id" not-null="true" />
+        </many-to-one>
+        <property name="prix" type="float">
+            <column name="prix" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="date" type="date">
+            <column name="date" length="10" not-null="true" />
+        </property>
+        <property name="quotePart" type="boolean">
+            <column name="quote_part" not-null="true" />
+        </property>
+        <set name="facturesRembourcements" table="factures_rembourcement" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="rembourcement_id" not-null="true" />
+            </key>
+            <one-to-many class="com.es.assurance.model.FacturesRembourcement" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4 nov. 2015 21:54:52 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.es.assurance.model.Facturations" table="facturations" catalog="assurance" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="policesAssurance" class="com.es.assurance.model.PolicesAssurance" fetch="select">
+            <column name="police_assurance_id" not-null="true" />
+        </many-to-one>
+        <property name="montant" type="float">
+            <column name="montant" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="dateDebut" type="string">
+            <column name="date_debut" length="45" not-null="true" />
+        </property>
+        <property name="dateEcheance" type="string">
+            <column name="date_echeance" length="45" not-null="true" />
+        </property>
+        <property name="datePayement" type="string">
+            <column name="date_payement" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

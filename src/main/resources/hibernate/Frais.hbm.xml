@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4 nov. 2015 21:54:52 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.es.assurance.model.Frais" table="frais" catalog="assurance" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="medecins" class="com.es.assurance.model.Medecins" fetch="select">
+            <column name="medecin_id" />
+        </many-to-one>
+        <many-to-one name="policesAssurance" class="com.es.assurance.model.PolicesAssurance" fetch="select">
+            <column name="police_assurance_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="typesFrais" class="com.es.assurance.model.TypesFrais" fetch="select">
+            <column name="type_frais_id" not-null="true" />
+        </many-to-one>
+        <property name="description" type="string">
+            <column name="description" length="120" not-null="true" />
+        </property>
+        <property name="scan" type="binary">
+            <column name="scan" not-null="true" />
+        </property>
+        <property name="causeAccident" type="boolean">
+            <column name="cause_accident" not-null="true" />
+        </property>
+        <property name="prix" type="float">
+            <column name="prix" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="date" type="date">
+            <column name="date" length="10" not-null="true" />
+        </property>
+        <property name="dateFin" type="date">
+            <column name="date_fin" length="10" />
+        </property>
+        <set name="couvertureses" table="couvertures" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="frais_id" not-null="true" />
+            </key>
+            <one-to-many class="com.es.assurance.model.Couvertures" />
+        </set>
+        <set name="rembourcementses" table="rembourcements" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="frais_id" not-null="true" />
+            </key>
+            <one-to-many class="com.es.assurance.model.Rembourcements" />
+        </set>
+        <set name="prescrises" table="prescris" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="frais_id" not-null="true" />
+            </key>
+            <one-to-many class="com.es.assurance.model.Prescris" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4 nov. 2015 21:54:52 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.es.assurance.model.ListesMedicament" table="listes_medicament" catalog="assurance" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="description" type="string">
+            <column name="description" length="100" not-null="true" />
+        </property>
+        <property name="anneeDebut" type="date">
+            <column name="annee_debut" length="0" not-null="true" />
+        </property>
+        <property name="anneeFin" type="date">
+            <column name="annee_fin" length="0" />
+        </property>
+        <set name="assuranceAnneeListeMedicaments" table="assurance_annee_liste_medicament" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="liste_medicament_id" not-null="true" />
+            </key>
+            <one-to-many class="com.es.assurance.model.AssuranceAnneeListeMedicament" />
+        </set>
+        <set name="medicamentListeMedicaments" table="medicament_liste_medicament" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="liste_medicament_id" not-null="true" />
+            </key>
+            <one-to-many class="com.es.assurance.model.MedicamentListeMedicament" />
+        </set>
+    </class>
+</hibernate-mapping>

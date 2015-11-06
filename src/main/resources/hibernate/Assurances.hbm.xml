@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4 nov. 2015 21:54:52 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.es.assurance.model.Assurances" table="assurances" catalog="assurance" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="assurancesAnnee" class="com.es.assurance.model.AssurancesAnnee" fetch="select">
+            <column name="assurance_annee_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="policesAssurance" class="com.es.assurance.model.PolicesAssurance" fetch="select">
+            <column name="police_assurance_id" not-null="true" />
+        </many-to-one>
+        <property name="resiliation" type="boolean">
+            <column name="resiliation" not-null="true" />
+        </property>
+        <set name="couvertureses" table="couvertures" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="assurance_id" not-null="true" />
+            </key>
+            <one-to-many class="com.es.assurance.model.Couvertures" />
+        </set>
+    </class>
+</hibernate-mapping>

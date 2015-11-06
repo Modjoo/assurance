@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 4 nov. 2015 21:54:52 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.es.assurance.model.Clients" table="clients" catalog="assurance" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="adresses" class="com.es.assurance.model.Adresses" fetch="select">
+            <column name="adresse_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="entreprises" class="com.es.assurance.model.Entreprises" fetch="select">
+            <column name="entreprise_id" />
+        </many-to-one>
+        <property name="nom" type="string">
+            <column name="nom" length="45" not-null="true" />
+        </property>
+        <property name="prenom" type="string">
+            <column name="prenom" length="45" not-null="true" />
+        </property>
+        <property name="telephone" type="string">
+            <column name="telephone" length="45" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="100" />
+        </property>
+        <property name="anniversaire" type="date">
+            <column name="anniversaire" length="10" not-null="true" />
+        </property>
+        <set name="facturesRembourcements" table="factures_rembourcement" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="client_id" />
+            </key>
+            <one-to-many class="com.es.assurance.model.FacturesRembourcement" />
+        </set>
+        <set name="policesAssurances" table="polices_assurance" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="client_id" not-null="true" />
+            </key>
+            <one-to-many class="com.es.assurance.model.PolicesAssurance" />
+        </set>
+    </class>
+</hibernate-mapping>
