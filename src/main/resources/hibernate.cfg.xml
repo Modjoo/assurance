@@ -22,6 +22,7 @@
         <mapping resource="hibernate/Clients.hbm.xml"></mapping>
         <mapping resource="hibernate/Complementaires.hbm.xml"></mapping>
         <mapping resource="hibernate/Couvertures.hbm.xml"></mapping>
+        <mapping resource="hibernate/DossiersMedical.hbm.xml"></mapping>
         <mapping resource="hibernate/EntrepriseMedecin.hbm.xml"></mapping>
         <mapping resource="hibernate/Entreprises.hbm.xml"></mapping>
         <mapping resource="hibernate/Facturations.hbm.xml"></mapping>
@@ -42,6 +43,5 @@
         <mapping resource="hibernate/TypesFrais.hbm.xml"></mapping>
         <mapping resource="hibernate/TypesPersonne.hbm.xml"></mapping>
         <mapping resource="hibernate/Villes.hbm.xml"></mapping>
-
     </session-factory>
 </hibernate-configuration>

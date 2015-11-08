@@ -1,5 +1,5 @@
 package com.es.assurance.model;
-// Generated 4 nov. 2015 21:54:52 by Hibernate Tools 4.3.1.Final
+// Generated 8 nov. 2015 22:21:35 by Hibernate Tools 4.3.1.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -22,6 +22,7 @@ public class Frais implements java.io.Serializable {
 	private Date dateFin;
 	private Set<Couvertures> couvertureses = new HashSet<Couvertures>(0);
 	private Set<Rembourcements> rembourcementses = new HashSet<Rembourcements>(0);
+	private Set<DossiersMedical> dossiersMedicals = new HashSet<DossiersMedical>(0);
 	private Set<Prescris> prescrises = new HashSet<Prescris>(0);
 
 	public Frais() {
@@ -40,7 +41,7 @@ public class Frais implements java.io.Serializable {
 
 	public Frais(Medecins medecins, PolicesAssurance policesAssurance, TypesFrais typesFrais, String description,
 			byte[] scan, boolean causeAccident, float prix, Date date, Date dateFin, Set<Couvertures> couvertureses,
-			Set<Rembourcements> rembourcementses, Set<Prescris> prescrises) {
+			Set<Rembourcements> rembourcementses, Set<DossiersMedical> dossiersMedicals, Set<Prescris> prescrises) {
 		this.medecins = medecins;
 		this.policesAssurance = policesAssurance;
 		this.typesFrais = typesFrais;
@@ -52,6 +53,7 @@ public class Frais implements java.io.Serializable {
 		this.dateFin = dateFin;
 		this.couvertureses = couvertureses;
 		this.rembourcementses = rembourcementses;
+		this.dossiersMedicals = dossiersMedicals;
 		this.prescrises = prescrises;
 	}
 
@@ -149,6 +151,14 @@ public class Frais implements java.io.Serializable {
 
 	public void setRembourcementses(Set<Rembourcements> rembourcementses) {
 		this.rembourcementses = rembourcementses;
+	}
+
+	public Set<DossiersMedical> getDossiersMedicals() {
+		return this.dossiersMedicals;
+	}
+
+	public void setDossiersMedicals(Set<DossiersMedical> dossiersMedicals) {
+		this.dossiersMedicals = dossiersMedicals;
 	}
 
 	public Set<Prescris> getPrescrises() {

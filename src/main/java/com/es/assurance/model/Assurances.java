@@ -1,5 +1,5 @@
 package com.es.assurance.model;
-// Generated 4 nov. 2015 21:54:52 by Hibernate Tools 4.3.1.Final
+// Generated 8 nov. 2015 22:21:35 by Hibernate Tools 4.3.1.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,22 +12,26 @@ public class Assurances implements java.io.Serializable {
 	private Integer id;
 	private AssurancesAnnee assurancesAnnee;
 	private PolicesAssurance policesAssurance;
+	private String numeroPolice;
 	private boolean resiliation;
 	private Set<Couvertures> couvertureses = new HashSet<Couvertures>(0);
 
 	public Assurances() {
 	}
 
-	public Assurances(AssurancesAnnee assurancesAnnee, PolicesAssurance policesAssurance, boolean resiliation) {
+	public Assurances(AssurancesAnnee assurancesAnnee, PolicesAssurance policesAssurance, String numeroPolice,
+			boolean resiliation) {
 		this.assurancesAnnee = assurancesAnnee;
 		this.policesAssurance = policesAssurance;
+		this.numeroPolice = numeroPolice;
 		this.resiliation = resiliation;
 	}
 
-	public Assurances(AssurancesAnnee assurancesAnnee, PolicesAssurance policesAssurance, boolean resiliation,
-			Set<Couvertures> couvertureses) {
+	public Assurances(AssurancesAnnee assurancesAnnee, PolicesAssurance policesAssurance, String numeroPolice,
+			boolean resiliation, Set<Couvertures> couvertureses) {
 		this.assurancesAnnee = assurancesAnnee;
 		this.policesAssurance = policesAssurance;
+		this.numeroPolice = numeroPolice;
 		this.resiliation = resiliation;
 		this.couvertureses = couvertureses;
 	}
@@ -54,6 +58,14 @@ public class Assurances implements java.io.Serializable {
 
 	public void setPolicesAssurance(PolicesAssurance policesAssurance) {
 		this.policesAssurance = policesAssurance;
+	}
+
+	public String getNumeroPolice() {
+		return this.numeroPolice;
+	}
+
+	public void setNumeroPolice(String numeroPolice) {
+		this.numeroPolice = numeroPolice;
 	}
 
 	public boolean isResiliation() {

@@ -1,5 +1,5 @@
 package com.es.assurance.model;
-// Generated 4 nov. 2015 21:54:52 by Hibernate Tools 4.3.1.Final
+// Generated 8 nov. 2015 22:21:35 by Hibernate Tools 4.3.1.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,6 +12,7 @@ public class Entreprises implements java.io.Serializable {
 	private Integer id;
 	private Adresses adresses;
 	private String nom;
+	private String compteBancaire;
 	private Set<Clients> clientses = new HashSet<Clients>(0);
 	private Set<EntrepriseMedecin> entrepriseMedecins = new HashSet<EntrepriseMedecin>(0);
 	private Set<FacturesRembourcement> facturesRembourcements = new HashSet<FacturesRembourcement>(0);
@@ -24,10 +25,11 @@ public class Entreprises implements java.io.Serializable {
 		this.nom = nom;
 	}
 
-	public Entreprises(Adresses adresses, String nom, Set<Clients> clientses, Set<EntrepriseMedecin> entrepriseMedecins,
-			Set<FacturesRembourcement> facturesRembourcements) {
+	public Entreprises(Adresses adresses, String nom, String compteBancaire, Set<Clients> clientses,
+			Set<EntrepriseMedecin> entrepriseMedecins, Set<FacturesRembourcement> facturesRembourcements) {
 		this.adresses = adresses;
 		this.nom = nom;
+		this.compteBancaire = compteBancaire;
 		this.clientses = clientses;
 		this.entrepriseMedecins = entrepriseMedecins;
 		this.facturesRembourcements = facturesRembourcements;
@@ -55,6 +57,14 @@ public class Entreprises implements java.io.Serializable {
 
 	public void setNom(String nom) {
 		this.nom = nom;
+	}
+
+	public String getCompteBancaire() {
+		return this.compteBancaire;
+	}
+
+	public void setCompteBancaire(String compteBancaire) {
+		this.compteBancaire = compteBancaire;
 	}
 
 	public Set<Clients> getClientses() {

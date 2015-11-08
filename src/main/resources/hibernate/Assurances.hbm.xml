@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 4 nov. 2015 21:54:52 by Hibernate Tools 4.3.1.Final -->
+<!-- Generated 8 nov. 2015 22:21:35 by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
     <class name="com.es.assurance.model.Assurances" table="assurances" catalog="assurance" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -14,6 +14,9 @@
         <many-to-one name="policesAssurance" class="com.es.assurance.model.PolicesAssurance" fetch="select">
             <column name="police_assurance_id" not-null="true" />
         </many-to-one>
+        <property name="numeroPolice" type="string">
+            <column name="numero_police" length="60" not-null="true" />
+        </property>
         <property name="resiliation" type="boolean">
             <column name="resiliation" not-null="true" />
         </property>

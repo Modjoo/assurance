@@ -1,5 +1,5 @@
 package com.es.assurance.model;
-// Generated 4 nov. 2015 21:54:52 by Hibernate Tools 4.3.1.Final
+// Generated 8 nov. 2015 22:21:35 by Hibernate Tools 4.3.1.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,17 +10,20 @@ import java.util.Set;
 public class Familles implements java.io.Serializable {
 
 	private Integer id;
+	private Clients clients;
 	private String nom;
 	private Set<PolicesAssurance> policesAssurances = new HashSet<PolicesAssurance>(0);
 
 	public Familles() {
 	}
 
-	public Familles(String nom) {
+	public Familles(Clients clients, String nom) {
+		this.clients = clients;
 		this.nom = nom;
 	}
 
-	public Familles(String nom, Set<PolicesAssurance> policesAssurances) {
+	public Familles(Clients clients, String nom, Set<PolicesAssurance> policesAssurances) {
+		this.clients = clients;
 		this.nom = nom;
 		this.policesAssurances = policesAssurances;
 	}
@@ -31,6 +34,14 @@ public class Familles implements java.io.Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Clients getClients() {
+		return this.clients;
+	}
+
+	public void setClients(Clients clients) {
+		this.clients = clients;
 	}
 
 	public String getNom() {

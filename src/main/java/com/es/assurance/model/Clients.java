@@ -1,5 +1,5 @@
 package com.es.assurance.model;
-// Generated 4 nov. 2015 21:54:52 by Hibernate Tools 4.3.1.Final
+// Generated 8 nov. 2015 22:21:35 by Hibernate Tools 4.3.1.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -18,23 +18,28 @@ public class Clients implements java.io.Serializable {
 	private String telephone;
 	private String email;
 	private Date anniversaire;
+	private String compteBancaire;
 	private Set<FacturesRembourcement> facturesRembourcements = new HashSet<FacturesRembourcement>(0);
 	private Set<PolicesAssurance> policesAssurances = new HashSet<PolicesAssurance>(0);
+	private Set<Familles> familleses = new HashSet<Familles>(0);
+	private Set<DossiersMedical> dossiersMedicals = new HashSet<DossiersMedical>(0);
 
 	public Clients() {
 	}
 
-	public Clients(Adresses adresses, String nom, String prenom, String telephone, Date anniversaire) {
+	public Clients(Adresses adresses, String nom, String prenom, String telephone, Date anniversaire,
+			String compteBancaire) {
 		this.adresses = adresses;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.telephone = telephone;
 		this.anniversaire = anniversaire;
+		this.compteBancaire = compteBancaire;
 	}
 
 	public Clients(Adresses adresses, Entreprises entreprises, String nom, String prenom, String telephone,
-			String email, Date anniversaire, Set<FacturesRembourcement> facturesRembourcements,
-			Set<PolicesAssurance> policesAssurances) {
+			String email, Date anniversaire, String compteBancaire, Set<FacturesRembourcement> facturesRembourcements,
+			Set<PolicesAssurance> policesAssurances, Set<Familles> familleses, Set<DossiersMedical> dossiersMedicals) {
 		this.adresses = adresses;
 		this.entreprises = entreprises;
 		this.nom = nom;
@@ -42,8 +47,11 @@ public class Clients implements java.io.Serializable {
 		this.telephone = telephone;
 		this.email = email;
 		this.anniversaire = anniversaire;
+		this.compteBancaire = compteBancaire;
 		this.facturesRembourcements = facturesRembourcements;
 		this.policesAssurances = policesAssurances;
+		this.familleses = familleses;
+		this.dossiersMedicals = dossiersMedicals;
 	}
 
 	public Integer getId() {
@@ -110,6 +118,14 @@ public class Clients implements java.io.Serializable {
 		this.anniversaire = anniversaire;
 	}
 
+	public String getCompteBancaire() {
+		return this.compteBancaire;
+	}
+
+	public void setCompteBancaire(String compteBancaire) {
+		this.compteBancaire = compteBancaire;
+	}
+
 	public Set<FacturesRembourcement> getFacturesRembourcements() {
 		return this.facturesRembourcements;
 	}
@@ -124,6 +140,22 @@ public class Clients implements java.io.Serializable {
 
 	public void setPolicesAssurances(Set<PolicesAssurance> policesAssurances) {
 		this.policesAssurances = policesAssurances;
+	}
+
+	public Set<Familles> getFamilleses() {
+		return this.familleses;
+	}
+
+	public void setFamilleses(Set<Familles> familleses) {
+		this.familleses = familleses;
+	}
+
+	public Set<DossiersMedical> getDossiersMedicals() {
+		return this.dossiersMedicals;
+	}
+
+	public void setDossiersMedicals(Set<DossiersMedical> dossiersMedicals) {
+		this.dossiersMedicals = dossiersMedicals;
 	}
 
 }

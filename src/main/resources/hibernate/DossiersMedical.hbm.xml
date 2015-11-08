@@ -3,22 +3,22 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 8 nov. 2015 22:21:35 by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
-    <class name="com.es.assurance.model.Familles" table="familles" catalog="assurance" optimistic-lock="version">
+    <class name="com.es.assurance.model.DossiersMedical" table="dossiers_medical" catalog="assurance" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="identity" />
         </id>
         <many-to-one name="clients" class="com.es.assurance.model.Clients" fetch="select">
-            <column name="client_createur_id" not-null="true" />
+            <column name="clients_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="frais" class="com.es.assurance.model.Frais" fetch="select">
+            <column name="frais_id" />
         </many-to-one>
         <property name="nom" type="string">
-            <column name="nom" length="45" not-null="true" />
+            <column name="nom" length="60" not-null="true" />
         </property>
-        <set name="policesAssurances" table="polices_assurance" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="famille_id" />
-            </key>
-            <one-to-many class="com.es.assurance.model.PolicesAssurance" />
-        </set>
+        <property name="description" type="string">
+            <column name="description" length="250" not-null="true" />
+        </property>
     </class>
 </hibernate-mapping>
