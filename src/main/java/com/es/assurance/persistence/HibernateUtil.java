@@ -1,10 +1,10 @@
 package com.es.assurance.persistence;
 
-import org.hibernate.Session;
+import java.io.File;
+
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.context.internal.ThreadLocalSessionContext;
-import org.hibernate.engine.spi.SessionFactoryImplementor;
 
 /**
  * Created by Christophe.KALMAN on 04.11.2015.
@@ -12,15 +12,22 @@ import org.hibernate.engine.spi.SessionFactoryImplementor;
 public class HibernateUtil{
 
     private static final SessionFactory sessionFactory = buildSessionFactory();
+    private static org.apache.log4j.Logger log = Logger.getLogger(HibernateUtil.class);
 
     static SessionFactory buildSessionFactory() {
+    	File f = loadFromFile();
+    	
         try {
             // Create the SessionFactory from hibernate.cfg.xml
-            return new Configuration().configure().buildSessionFactory();
+        	if(!f.exists()){
+        		return new Configuration().configure().buildSessionFactory();
+        	}else{
+        		return new Configuration().configure(f).buildSessionFactory();
+        	}            
         }
         catch (Throwable ex) {
             // Make sure you log the exception, as it might be swallowed
-            System.err.println("Initial SessionFactory creation failed." + ex);
+            log.error("Initial SessionFactory creation failed.", ex.getCause());
             throw new ExceptionInInitializerError(ex);
         }
     }
@@ -32,5 +39,10 @@ public class HibernateUtil{
     public static void shutdown() {
         // Close caches and connection pools
         getSessionFactory().close();
+    }
+    
+    private static File loadFromFile(){
+    	File f = new File("./config/hibernate.cfg.xml");
+    	return f;
     }
 }

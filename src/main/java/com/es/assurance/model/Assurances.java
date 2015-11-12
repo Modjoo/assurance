@@ -1,5 +1,5 @@
 package com.es.assurance.model;
-// Generated 8 nov. 2015 22:21:35 by Hibernate Tools 4.3.1.Final
+// Generated 12 nov. 2015 20:05:27 by Hibernate Tools 4.3.1.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,25 +14,28 @@ public class Assurances implements java.io.Serializable {
 	private PolicesAssurance policesAssurance;
 	private String numeroPolice;
 	private boolean resiliation;
+	private int modifieur;
 	private Set<Couvertures> couvertureses = new HashSet<Couvertures>(0);
 
 	public Assurances() {
 	}
 
 	public Assurances(AssurancesAnnee assurancesAnnee, PolicesAssurance policesAssurance, String numeroPolice,
-			boolean resiliation) {
+			boolean resiliation, int modifieur) {
 		this.assurancesAnnee = assurancesAnnee;
 		this.policesAssurance = policesAssurance;
 		this.numeroPolice = numeroPolice;
 		this.resiliation = resiliation;
+		this.modifieur = modifieur;
 	}
 
 	public Assurances(AssurancesAnnee assurancesAnnee, PolicesAssurance policesAssurance, String numeroPolice,
-			boolean resiliation, Set<Couvertures> couvertureses) {
+			boolean resiliation, int modifieur, Set<Couvertures> couvertureses) {
 		this.assurancesAnnee = assurancesAnnee;
 		this.policesAssurance = policesAssurance;
 		this.numeroPolice = numeroPolice;
 		this.resiliation = resiliation;
+		this.modifieur = modifieur;
 		this.couvertureses = couvertureses;
 	}
 
@@ -74,6 +77,14 @@ public class Assurances implements java.io.Serializable {
 
 	public void setResiliation(boolean resiliation) {
 		this.resiliation = resiliation;
+	}
+
+	public int getModifieur() {
+		return this.modifieur;
+	}
+
+	public void setModifieur(int modifieur) {
+		this.modifieur = modifieur;
 	}
 
 	public Set<Couvertures> getCouvertureses() {

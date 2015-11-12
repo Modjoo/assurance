@@ -2,6 +2,7 @@ package com.es.assurance.model;
 // Generated 8 nov. 2015 22:21:35 by Hibernate Tools 4.3.1.Final
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -16,6 +17,7 @@ public class Adresses implements java.io.Serializable {
 	private Set<Clients> clientses = new HashSet<Clients>(0);
 
 	public Adresses() {
+	
 	}
 
 	public Adresses(Rues rues, String no) {
@@ -69,5 +71,17 @@ public class Adresses implements java.io.Serializable {
 	public void setClientses(Set<Clients> clientses) {
 		this.clientses = clientses;
 	}
-
+	
+	/**
+	 * Afficher adresse
+	 * @param ad
+	 */
+	public static void afficher(List<Adresses> ad){
+		System.out.println("id \t rue \t no");
+		for (Adresses adresses : ad) {
+			String afficher = adresses.getId() + "\t" + adresses.getRues().getAdresseses() + "\t" + adresses.getNo();
+			System.out.println(afficher);
+		}
+	}
+	
 }

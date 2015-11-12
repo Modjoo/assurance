@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 8 nov. 2015 22:21:35 by Hibernate Tools 4.3.1.Final -->
+<!-- Generated 12 nov. 2015 20:05:27 by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
     <class name="com.es.assurance.model.DossiersMedical" table="dossiers_medical" catalog="assurance" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -9,7 +9,7 @@
             <generator class="identity" />
         </id>
         <many-to-one name="clients" class="com.es.assurance.model.Clients" fetch="select">
-            <column name="clients_id" not-null="true" />
+            <column name="client_id" not-null="true" />
         </many-to-one>
         <many-to-one name="frais" class="com.es.assurance.model.Frais" fetch="select">
             <column name="frais_id" />

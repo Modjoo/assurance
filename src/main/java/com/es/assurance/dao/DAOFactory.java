@@ -25,7 +25,9 @@ public abstract class DAOFactory {
             throw new RuntimeException("Couldn't create DAOFactory: " + factory);
         }
     }
+    
     // DAO Interface
     public abstract AdressesHibernateDAO getAdressesDAO();
+    public abstract ClientsHibernateDAO getClientsDAO();
 }
 

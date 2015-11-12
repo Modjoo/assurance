@@ -8,23 +8,28 @@ import org.hibernate.Session;
  */
 public class HibernateDAOFactory extends DAOFactory {
 
-    @Override
-    public AdressesHibernateDAO getAdressesDAO() {
-        return (AdressesHibernateDAO) instantiateDAO(AdressesHibernateDAO.class);
-    }
+	protected Session getCurrentSession() {
+		return HibernateUtil.getSessionFactory().getCurrentSession();
+	}
 
+	private GenericHibernateDAO instantiateDAO(Class daoClass) {
+		try {
+			GenericHibernateDAO dao = (GenericHibernateDAO) daoClass.newInstance();
+			dao.setSession(getCurrentSession());
+			return dao;
+		} catch (Exception ex) {
+			throw new RuntimeException("Can not instantiate DAO: " + daoClass, ex);
+		}
+	}
 
-    protected Session getCurrentSession() {
-        return HibernateUtil.getSessionFactory().getCurrentSession();
-    }
+	@Override
+	public ClientsHibernateDAO getClientsDAO() {
+		// TODO Auto-generated method stub
+		return (ClientsHibernateDAO) instantiateDAO(ClientsHibernateDAO.class);
+	}
 
-    private GenericHibernateDAO instantiateDAO(Class daoClass) {
-        try {
-            GenericHibernateDAO dao = (GenericHibernateDAO)daoClass.newInstance();
-            dao.setSession(getCurrentSession());
-            return dao;
-        } catch (Exception ex) {
-            throw new RuntimeException("Can not instantiate DAO: " + daoClass, ex);
-        }
-    }
+	@Override
+	public AdressesHibernateDAO getAdressesDAO() {
+		return (AdressesHibernateDAO) instantiateDAO(AdressesHibernateDAO.class);
+	}
 }

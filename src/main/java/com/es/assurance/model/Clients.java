@@ -3,6 +3,7 @@ package com.es.assurance.model;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -156,6 +157,18 @@ public class Clients implements java.io.Serializable {
 
 	public void setDossiersMedicals(Set<DossiersMedical> dossiersMedicals) {
 		this.dossiersMedicals = dossiersMedicals;
+	}
+	
+	public static void afficher(List<Clients> clients){
+		System.out.println("id \t nom \t prenom \t telephonne \t date-anniversaire \t rue \t no \t ville");
+		for (Clients client : clients) {
+			Adresses adresse = client.getAdresses();
+			Villes ville = adresse.getRues().getNpa().getVilles();
+			String afficher = client.getId() + "\t" + client.getNom() + "\t" + client.getPrenom() + "\t" + client.getTelephone() 
+			+ "\t" + client.getAnniversaire() + "\t" + adresse.getRues().getRue() + "\t" + adresse.getNo()
+			+ "\t" + ville.getNom();
+			System.out.println(afficher);
+		}
 	}
 
 }
